@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/providers/movies_provider.dart';
 import 'package:peliculas/screens/screens.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(AppState());
 
 class MyApp extends StatelessWidget {
   static const Color primary = Colors.indigo;
@@ -25,6 +27,20 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
         ),
       ),
+    );
+  }
+}
+
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MoviesProvider(), lazy: false),
+      ],
+      child: MyApp(),
     );
   }
 }
