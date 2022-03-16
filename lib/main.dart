@@ -3,7 +3,7 @@ import 'package:peliculas/providers/movies_provider.dart';
 import 'package:peliculas/screens/screens.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(AppState());
+void main() => runApp(const AppState());
 
 class MyApp extends StatelessWidget {
   static const Color primary = Colors.indigo;
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Películas',
       initialRoute: 'home',
       routes: {
-        'home': (_) => HomeScreen(),
+        'home': (_) => const HomeScreen(),
         'details': (_) => DetailsScreen(),
       },
       theme: ThemeData.light().copyWith(
