@@ -17,9 +17,7 @@ class DetailsScreen extends StatelessWidget {
               movie,
             ),
             _Overview(movie),
-            _Overview(movie),
-            _Overview(movie),
-            CastingCards(),
+            CastingCards(movie.id),
           ]))
         ],
       ),
@@ -80,12 +78,15 @@ class _PosterAndTitle extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: FadeInImage(
-              placeholder: const AssetImage('assets/no-image.jpg'),
-              image: NetworkImage(movie.fullPosterImg),
-              height: 150,
+          Hero(
+            tag: movie.heroid!,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/no-image.jpg'),
+                image: NetworkImage(movie.fullPosterImg),
+                height: 150,
+              ),
             ),
           ),
           SizedBox(
