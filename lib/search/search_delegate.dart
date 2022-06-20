@@ -50,7 +50,7 @@ class MovieSearchDelegate extends SearchDelegate {
       return _emptyContainer();
     }
 
-    print('peticion HTTP');
+    //print('peticion HTTP');
 
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
     moviesProvider.getSuggestionsByQuery(query);

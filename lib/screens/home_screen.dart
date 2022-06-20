@@ -22,15 +22,26 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             //CardSwiper
             CardSwiper(movies: moviesProvider.onDisplayMovies),
-            // Listado horizontal de películas
+            //Listado horizontal de películas
             MovieSlider(
               movies: moviesProvider.popularMovies,
               title: 'Populares',
               onNextPage: () => moviesProvider.getPopularMovies(),
+            ),
+            MovieSlider(
+              movies: moviesProvider.topRatedMovies,
+              title: 'Top',
+              onNextPage: () => moviesProvider.getTopMovies(),
+            ),
+            MovieSlider(
+              movies: moviesProvider.upcomingMovies,
+              title: 'A estrenar',
+              onNextPage: () => moviesProvider.getUpComingMovies(),
             ),
           ],
         ),

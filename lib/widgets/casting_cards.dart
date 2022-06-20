@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:peliculas/models/models.dart';
 import 'package:peliculas/providers/movies_provider.dart';
@@ -18,7 +20,7 @@ class CastingCards extends StatelessWidget {
         if (!snapshot.hasData) {
           return Container(
             constraints: BoxConstraints(maxWidth: 150),
-            height: 190,
+            height: 230,
             child: CupertinoActivityIndicator(),
           );
         }
@@ -27,11 +29,11 @@ class CastingCards extends StatelessWidget {
 
         return Container(
           width: double.infinity,
-          height: 190,
+          height: 230,
           child: Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
+              itemCount: cast.length,
               itemBuilder: (_, int index) => _CastCard(cast[index]),
             ),
           ),
@@ -70,7 +72,18 @@ class _CastCard extends StatelessWidget {
             actor.name,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            actor.character!,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            style:
+                TextStyle(fontSize: 12, color: Color.fromARGB(255, 0, 0, 255)),
           ),
         ],
       ),

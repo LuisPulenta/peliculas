@@ -97,7 +97,7 @@ class _PosterAndTitle extends StatelessWidget {
             width: 20,
           ),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: size.width - 170),
+            constraints: BoxConstraints(maxWidth: size.width - 180),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -12,7 +12,11 @@ class MoviesProvider extends ChangeNotifier {
 
   List<Movie> onDisplayMovies = [];
   List<Movie> popularMovies = [];
+  List<Movie> topRatedMovies = [];
+  List<Movie> upcomingMovies = [];
   int _popularPage = 0;
+  int _topRatedPage = 0;
+  int _upcomingPage = 0;
 
   final debouncer = Debouncer(
     duration: Duration(milliseconds: 500),
@@ -28,6 +32,8 @@ class MoviesProvider extends ChangeNotifier {
   MoviesProvider() {
     getOnDisplayMovies();
     getPopularMovies();
+    getTopMovies();
+    getUpComingMovies();
   }
 
   getOnDisplayMovies() async {
@@ -40,8 +46,24 @@ class MoviesProvider extends ChangeNotifier {
   getPopularMovies() async {
     _popularPage++;
     final jsonData = await _getJsonData('3/movie/popular', _popularPage);
-    final popularResponse = PopularResponse.fromJson(jsonData);
+    final popularResponse = MoviesResponse.fromJson(jsonData);
     popularMovies = [...popularMovies, ...popularResponse.results];
+    notifyListeners();
+  }
+
+  getTopMovies() async {
+    _topRatedPage++;
+    final jsonData = await _getJsonData('3/movie/top_rated', _topRatedPage);
+    final topRatedResponse = MoviesResponse.fromJson(jsonData);
+    topRatedMovies = [...topRatedMovies, ...topRatedResponse.results];
+    notifyListeners();
+  }
+
+  getUpComingMovies() async {
+    _upcomingPage++;
+    final jsonData = await _getJsonData('3/movie/upcoming', _upcomingPage);
+    final upcomingResponse = MoviesResponse.fromJson(jsonData);
+    upcomingMovies = [...upcomingMovies, ...upcomingResponse.results];
     notifyListeners();
   }
 
