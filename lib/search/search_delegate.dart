@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/models/models.dart';
-import 'package:peliculas/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../models/models.dart';
+import '../providers/movies_provider.dart';
 
 class MovieSearchDelegate extends SearchDelegate {
   @override
@@ -9,12 +10,7 @@ class MovieSearchDelegate extends SearchDelegate {
 
   @override
   List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () => query = '',
-      )
-    ];
+    return [IconButton(icon: Icon(Icons.clear), onPressed: () => query = '')];
   }
 
   @override

@@ -1,9 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
-import 'package:peliculas/models/models.dart';
-import 'package:peliculas/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../models/models.dart';
+import '../providers/movies_provider.dart';
 
 class CastingCards extends StatelessWidget {
   final int movieId;
@@ -65,25 +64,23 @@ class _CastCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5),
           Text(
             actor.name,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5),
           Text(
             actor.character!,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             textAlign: TextAlign.center,
-            style:
-                TextStyle(fontSize: 12, color: Color.fromARGB(255, 0, 0, 255)),
+            style: TextStyle(
+              fontSize: 12,
+              color: Color.fromARGB(255, 0, 0, 255),
+            ),
           ),
         ],
       ),

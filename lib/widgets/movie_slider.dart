@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/models/models.dart';
+
+import '../models/models.dart';
 
 class MovieSlider extends StatefulWidget {
   final List<Movie> movies;
   final String? title;
   final Function onNextPage;
 
-  const MovieSlider(
-      {Key? key, required this.movies, required this.onNextPage, this.title})
-      : super(key: key);
+  const MovieSlider({
+    Key? key,
+    required this.movies,
+    required this.onNextPage,
+    this.title,
+  }) : super(key: key);
 
   @override
   State<MovieSlider> createState() => _MovieSliderState();
@@ -48,22 +52,23 @@ class _MovieSliderState extends State<MovieSlider> {
                   child: Text(
                     this.widget.title!,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 )
               : Container(),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5),
           Expanded(
             child: ListView.builder(
               controller: scrollController,
               scrollDirection: Axis.horizontal,
               itemCount: widget.movies.length,
-              itemBuilder: (_, int index) => _MoviePoster(widget.movies[index],
-                  '${widget.title}-${index}-${widget.movies[index].id}'),
+              itemBuilder: (_, int index) => _MoviePoster(
+                widget.movies[index],
+                '${widget.title}-${index}-${widget.movies[index].id}',
+              ),
             ),
           ),
         ],
@@ -105,9 +110,7 @@ class _MoviePoster extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5),
           Text(
             movie.title,
             overflow: TextOverflow.ellipsis,

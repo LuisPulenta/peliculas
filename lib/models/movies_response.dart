@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:peliculas/models/models.dart';
+
+import 'models.dart';
 
 class MoviesResponse {
   MoviesResponse({
@@ -18,9 +19,9 @@ class MoviesResponse {
       MoviesResponse.fromMap(json.decode(str));
 
   factory MoviesResponse.fromMap(Map<String, dynamic> json) => MoviesResponse(
-        page: json["page"],
-        results: List<Movie>.from(json["results"].map((x) => Movie.fromMap(x))),
-        totalPages: json["total_pages"],
-        totalResults: json["total_results"],
-      );
+    page: json['page'],
+    results: List<Movie>.from(json['results'].map((x) => Movie.fromMap(x))),
+    totalPages: json['total_pages'],
+    totalResults: json['total_results'],
+  );
 }

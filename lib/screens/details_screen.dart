@@ -1,7 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:peliculas/models/models.dart';
-import 'package:peliculas/widgets/widgets.dart';
+
+import '../models/models.dart';
+import '../widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   @override
@@ -13,13 +14,12 @@ class DetailsScreen extends StatelessWidget {
         slivers: [
           _CustomAppBar(movie),
           SliverList(
-              delegate: SliverChildListDelegate([
-            _PosterAndTitle(
-              movie,
-            ),
-            _Overview(movie),
-            CastingCards(movie.id),
-          ]))
+            delegate: SliverChildListDelegate([
+              _PosterAndTitle(movie),
+              _Overview(movie),
+              CastingCards(movie.id),
+            ]),
+          ),
         ],
       ),
     );
@@ -51,7 +51,7 @@ class _CustomAppBar extends StatelessWidget {
               delay: Duration(milliseconds: 300),
               child: Text(
                 movie.title,
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16, color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -93,9 +93,7 @@ class _PosterAndTitle extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: 20,
-          ),
+          SizedBox(width: 20),
           ConstrainedBox(
             constraints: BoxConstraints(maxWidth: size.width - 180),
             child: Column(
@@ -105,7 +103,7 @@ class _PosterAndTitle extends StatelessWidget {
                   delay: Duration(milliseconds: 200),
                   child: Text(
                     movie.title,
-                    style: textTheme.headline5,
+                    style: textTheme.headlineSmall,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
@@ -114,7 +112,7 @@ class _PosterAndTitle extends StatelessWidget {
                   delay: Duration(milliseconds: 400),
                   child: Text(
                     movie.originalTitle,
-                    style: textTheme.subtitle1,
+                    style: textTheme.titleMedium,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
@@ -128,21 +126,19 @@ class _PosterAndTitle extends StatelessWidget {
                         size: 15,
                         color: Colors.grey,
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
+                      SizedBox(width: 5),
                       Text(
                         movie.voteAverage.toString(),
-                        style: textTheme.caption,
+                        style: textTheme.bodySmall,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -164,7 +160,7 @@ class _Overview extends StatelessWidget {
         child: Text(
           movie.overview,
           textAlign: TextAlign.justify,
-          style: textTheme.subtitle1,
+          style: textTheme.titleMedium,
         ),
       ),
     );

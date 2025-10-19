@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/providers/movies_provider.dart';
-import 'package:peliculas/screens/screens.dart';
 import 'package:provider/provider.dart';
+
+import 'providers/movies_provider.dart';
+import 'screens/screens.dart';
 
 void main() => runApp(const AppState());
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         primaryColor: primary,
         //AppBar Theme
         appBarTheme: const AppBarTheme(
-          color: primary,
+          foregroundColor: Colors.white,
+          backgroundColor: primary,
           elevation: 0,
           centerTitle: true,
         ),
